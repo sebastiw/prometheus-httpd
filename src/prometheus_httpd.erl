@@ -65,6 +65,10 @@ start() ->
                                  prometheus_httpd
                                 ]},
                       {port, prometheus_http_config:port()},
+                      {bind_address, prometheus_http_config:bind_address()},
+                      {ipfamily, prometheus_http_config:ipfamily()},
+                      {socket_type, prometheus_http_config:socket_type()},
+                      {profile, prometheus_http_config:profile()},
                       {server_name, ?SERVER_NAME},
                       {document_root, code:priv_dir(prometheus_httpd)},
                       {server_root, code:priv_dir(prometheus_httpd)}

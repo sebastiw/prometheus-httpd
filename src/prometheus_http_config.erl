@@ -8,6 +8,10 @@
          registry/0,
          telemetry_registry/0,
          port/0,
+         bind_address/0,
+         ipfamily/0,
+         socket_type/0,
+         profile/0,
          authorization/0]).
 
 %% TODO: remove
@@ -20,6 +24,10 @@
 -define(DEFAULT_TELEMETRY_REGISTRY, default).
 -define(DEFAULT_AUTHORIZATION, false).
 -define(DEFAULT_PORT, 8081).
+-define(DEFAULT_BIND_ADDRESS, any).
+-define(DEFAULT_IPFAMILY, inet).
+-define(DEFAULT_SOCKET_TYPE, ip_comm).
+-define(DEFAULT_PROFILE, default).
 
 -define(DEFAULT_CONFIG, [{path, ?DEFAULT_PATH},
                          {format, ?DEFAULT_FORMAT},
@@ -60,6 +68,14 @@ allowed_formats() ->
    {prometheus_protobuf_format:content_type(), prometheus_protobuf_format}].
 
 port() -> get_value(port, ?DEFAULT_PORT).
+
+bind_address() -> get_value(bind_address, ?DEFAULT_BIND_ADDRESS).
+
+ipfamily() -> get_value(ipfamily, ?DEFAULT_IPFAMILY).
+
+socket_type() -> get_value(socket_type, ?DEFAULT_SOCKET_TYPE).
+
+profile() -> get_value(profile, ?DEFAULT_PROFILE).
 
 authorization() ->
   case get_value(authorization, ?DEFAULT_AUTHORIZATION) of
